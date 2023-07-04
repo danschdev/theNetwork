@@ -16,7 +16,7 @@ class PostController extends AbstractController {
             'text' => 'Welcome to The Network everybody 😎',
         ]);
     }
-    #[Route('/browse/{slug}')]
+    #[Route('/browse/{slug}', name: 'app_browse')]
     public function browse(string $slug = null) {
         $topic = \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true);
 

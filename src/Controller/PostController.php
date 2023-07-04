@@ -18,12 +18,12 @@ class PostController extends AbstractController
     }
 
     #[Route('/browse/{slug}', name: 'app_browse')]
-    public function browse(string $slug = null)
+    public function browse(string $slug = null): Response
     {
-        $topic = \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true);
+        $topic = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true) : null;
 
         return $this->render('post/post.html.twig', [
-            'text' => 'Talk to your family? Meet new friends? See what\'s going on'.($slug ? ' about '.$topic :'').'!',
+            'text' => 'Talk to your family? Meet new friends? See what\'s going on'.($slug ? ' about '.$topic : '').'!',
         ]);
     }
 }

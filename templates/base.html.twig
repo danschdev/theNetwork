@@ -15,6 +15,14 @@
         {% endblock %}
     </head>
     <body>
+        <a class="navbar-brand app-header-link" href="{{ path('app_homepage') }}">
+            <i class="fas fa-record-vinyl"></i>
+            The Network
+        </a>
+        <a class="navbar-brand app-header-link" href="{{ path('app_browse') }}">
+            <i class="fas fa-record-vinyl"></i>
+            Browse
+        </a>
         {% block body %}{% endblock %}
     </body>
 </html>

@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
-    #[Route('/')]
+    #[Route('/', name: 'app_homepage')]
     public function homepage(): Response
     {
         return $this->render('post/homepage.html.twig', [
@@ -17,11 +17,13 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/browse/{slug}')]
+    #[Route('/browse/{slug}', name: 'app_browse')]
     public function browse(string $slug = null)
     {
         $topic = \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true);
 
-        return new Response('Talk to your family? Meet new friends? See what\'s going on'.($slug ? ' about '.$topic : '').'!');
+        return $this->render('post/post.html.twig', [
+            'text' => 'Talk to your family? Meet new friends? See what\'s going on'.($slug ? ' about '.$topic :'').'!',
+        ]);
     }
 }

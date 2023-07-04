@@ -1,3 +1,7 @@
 h1.post-date {
     font-size: medium;
 }
+
+.app-header-link {
+    margin-inline-end: 5px;
+}

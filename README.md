@@ -9,3 +9,11 @@
 > symfony server:start
 5. Call the project URL in your browser
 > http://127.0.0.1:8000/
+
+# code quality
+## PHPStan
+$ vendor/bin/phpstan analyse src --level 0 
+$ vendor/bin/phpstan analyse src --level 9
+The higher level, the stricter errors are reported
+## CS-Fixer
+$ vendor/bin/php-cs-fixer fix src

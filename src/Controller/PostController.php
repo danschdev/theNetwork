@@ -20,7 +20,7 @@ class PostController extends AbstractController
     #[Route('/browse/{slug}', name: 'app_browse')]
     public function browse(string $slug = null): Response
     {
-        $topic = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true) : null;
+        $topic = \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true);
 
         return $this->render('post/post.html.twig', [
             'text' => 'Talk to your family? Meet new friends? See what\'s going on'.($slug ? ' about '.$topic : '').'!',

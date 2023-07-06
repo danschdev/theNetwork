@@ -23,9 +23,19 @@ jobs:
             - name: Run php-cs-fixer
               run: ./vendor/bin/php-cs-fixer fix
 
-            - name: Runc phpstan
-              run: ./vendor/bin/phpstan analyse src --level 9
-
             - uses: stefanzweifel/git-auto-commit-action@v4
               with:
                   commit_message: Apply php-cs-fixer changes
+
+    php-stan:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.head_ref }}
+
+            - name: Install
+              run: composer install
+
+            - name: Runc phpstan
+              run: ./vendor/bin/phpstan analyse src --level 9

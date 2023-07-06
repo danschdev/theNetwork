@@ -18,7 +18,7 @@ class PostController extends AbstractController
     }
 
     #[Route('/browse/{slug}', name: 'app_browse')]
-    public  function browse(string $slug = null): Response
+    public function browse(string $slug = null): Response
     {
         $topic = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true) : null;
 

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Post;
-use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,7 +34,7 @@ class PostController extends AbstractController
     {
         $post = new Post();
         $post->setContent('Welcome to The Network everybody 😎🎉');
-        $post->setVotes(rand(-50,50));
+        $post->setVotes(rand(-50, 50));
 
         $entityManager->persist($post);
         $entityManager->flush();

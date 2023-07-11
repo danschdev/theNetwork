@@ -15,10 +15,10 @@ class Post
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $createdDate = null;
+    private \DateTimeInterface $createdDate;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $updatedDate = null;
+    private \DateTimeInterface $updatedDate;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
@@ -31,7 +31,7 @@ class Post
 
     public function __construct()
     {
-        $this->createdDate = new \DateTimeImmutable(); 
+        $this->createdDate = new \DateTimeImmutable();
         $this->createdAt = new \DateTimeImmutable();
         $this->updatedDate = new \DateTimeImmutable();
     }
@@ -41,7 +41,7 @@ class Post
         return $this->id;
     }
 
-    public function getCreatedDate(): ?\DateTimeInterface
+    public function getCreatedDate(): \DateTimeInterface
     {
         return $this->createdDate;
     }
@@ -53,7 +53,7 @@ class Post
         return $this;
     }
 
-    public function getUpdatedDate(): ?\DateTimeInterface
+    public function getUpdatedDate(): \DateTimeInterface
     {
         return $this->updatedDate;
     }
@@ -77,7 +77,7 @@ class Post
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }

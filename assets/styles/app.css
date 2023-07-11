@@ -2,8 +2,13 @@ body {
     background-color: lightgray;
 }
 
-h1.post-date {
+h1.post-data {
     font-size: medium;
+}
+
+.post-data .post-votes {
+    color: #000055;
+    font-style: italic;
 }
 
 .app-header-link {

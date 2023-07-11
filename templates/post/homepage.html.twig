@@ -2,8 +2,8 @@
 {% block body %}
     {% for post in posts  %}
         <div>
-            <h1 class="post-date">{{ post.createdDate|date("d.m.Y H:m") }}</h1>
-            {{ post.content }}
+            <h1 class="post-data">{{ post.createdDate|date("d.m.Y H:i:s") }} <span class="post-votes">{% if post.votes > 0 %}+{% endif %}{{ post.votes }}</span></h1>
+            {{ post.content }}#
         </div>
     {% endfor %}
 {% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PostController extends AbstractController
 {
     public function __construct(private PostRepository $postRepository)
-    {     
+    {
     }
 
     #[Route('/', name: 'app_homepage')]
@@ -24,7 +24,7 @@ class PostController extends AbstractController
 
         return $this->render('post/homepage.html.twig', [
             'date' => new \DateTime(),
-            'text' => $text,
+            'posts' => $posts,
         ]);
     }
 

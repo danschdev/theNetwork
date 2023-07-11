@@ -31,7 +31,9 @@ class Post
 
     public function __construct()
     {
+        $this->createdDate = new \DateTimeImmutable(); 
         $this->createdAt = new \DateTimeImmutable();
+        $this->updatedDate = new \DateTimeImmutable();
     }
 
     public function getId(): ?int

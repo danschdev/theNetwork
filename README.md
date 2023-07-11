@@ -12,8 +12,23 @@
 
 # code quality
 ## PHPStan
-$ vendor/bin/phpstan analyse src --level 0 
-$ vendor/bin/phpstan analyse src --level 9
+> vendor/bin/phpstan analyse src --level 0 
+
+> vendor/bin/phpstan analyse src --level 9
+
 The higher level, the stricter errors are reported
 ## CS-Fixer
-$ vendor/bin/php-cs-fixer fix src
+> vendor/bin/php-cs-fixer fix src
+
+# database
+Create a migration based on the coded entities:
+> symfony console make:migration
+
+Show a list of all migrations
+> symfony console doctrine:migrations:list
+
+Execute migrations which have not been executed yet:
+>  symfony console doctrine:migrations:migrate
+
+Query the database:
+> symfony console doctrine:query:sql 'SELECT * FROM post'

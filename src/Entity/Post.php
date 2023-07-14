@@ -105,7 +105,7 @@ class Post
     {
         $prefix = $this->getVotes() >= 0 ? '+' : '-';
 
-        return sprintf('%s%d', $prefix, abs($this->getVotes()));
+        return sprintf('%s%s', $prefix, $this->getVotes() ? abs($this->getVotes()) : 0);
     }
 
     public function getImageUrl(int $width): string

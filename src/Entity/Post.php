@@ -100,4 +100,10 @@ class Post
 
         return $this;
     }
+
+    public function getVotesString(): string
+    {
+        $prefix = $this->getVotes() >= 0 ? '+' : '-';
+        return sprintf('%s%d', $prefix, abs($this->getVotes()));
+    }
 }

@@ -11,16 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
-    public function __construct(private PostRepository $postRepository)
+    public function __construct()
     {
     }
 
     #[Route('/', name: 'app_homepage')]
-    public function homepage(): Response
+    public function homepage(PostRepository $postRepository): Response
     {
-        $posts = $this->postRepository->findAll();
-
-        $text = $posts[0] ? $posts[0]->getContent() : 'No posts available!';
+        $posts = $postRepository->findBy([], ['votes' => 'DESC']);
 
         return $this->render('post/homepage.html.twig', [
             'date' => new \DateTime(),

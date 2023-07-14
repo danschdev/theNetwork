@@ -2,7 +2,14 @@ body {
     background-color: lightgray;
 }
 
-h1.post-data {
+.post {
+    width: 100%;
+}
+
+.post-avatar {
+}
+
+.post-data {
     font-size: medium;
 }
 

@@ -1,9 +1,23 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     {% for post in posts  %}
-        <div>
-            <h1 class="post-data">{{ post.createdDate|date("d.m.Y H:i:s") }} <span class="post-votes">{{ post.votesString }}</span></h1>
-            {{ post.content }}
+        <div class="post">
+            <div class="post-header">
+                <span class="post-avatar">
+                    <img src="{{ post.imageUrl(50) }}">
+                </span>
+                <span class="post-date">
+                    {{ post.createdDate|date("d.m.Y H:i:s") }}
+                </span>
+            </div>
+            <div class="post-content">
+                {{ post.content }}
+            </div>
+            <div class="post-footer">
+                <span class="post-votes">
+                    {{ post.votesString }}
+                </span>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}

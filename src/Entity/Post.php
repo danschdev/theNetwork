@@ -104,6 +104,16 @@ class Post
     public function getVotesString(): string
     {
         $prefix = $this->getVotes() >= 0 ? '+' : '-';
+
         return sprintf('%s%d', $prefix, abs($this->getVotes()));
+    }
+
+    public function getImageUrl(int $width): string
+    {
+        return sprintf(
+            'https://picsum.photos/id/%d/%d',
+            ($this->getId() + 50) % 1000,
+            $width
+        );
     }
 }

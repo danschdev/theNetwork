@@ -6,7 +6,7 @@
                 <span class="post-avatar">
                     <img src="{{ post.imageUrl(50) }}">
                 </span>
-                <a href="{{ path('app_post', { 'id' : post.id }) }}"
+                <a href="{{ path('app_post', { 'slug' : post.slug }) }}"
                     <span class="post-date">
                         {{ post.createdAt|date("d.m.Y H:i:s") }}
                     </span>

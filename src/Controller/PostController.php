@@ -54,7 +54,7 @@ class PostController extends AbstractController
         ));
     }
 
-    #[Route('/post/{id}', name: 'app_post')]
+    #[Route('/post/{slug}', name: 'app_post')]
     public function show(Post $post): Response
     {
         return $this->render('post/post.html.twig', [
@@ -76,7 +76,7 @@ class PostController extends AbstractController
         $this->addFlash('success', 'Vote counted!');
 
         return $this->redirectToRoute('app_post', [
-            'id' => $post->getId(),
+            'slug' => $post->getSlug(),
         ]);
     }
 }

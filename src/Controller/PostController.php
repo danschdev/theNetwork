@@ -67,9 +67,9 @@ class PostController extends AbstractController
     {
         $direction = $request->request->get('direction', 'up');
         if ('up' == $direction) {
-            $post->setVotes($post->getVotes() + 1);
+            $post->upVote();
         } else {
-            $post->setVotes($post->getVotes() - 1);
+            $post->downVote();
         }
         $entityManager->flush();
 

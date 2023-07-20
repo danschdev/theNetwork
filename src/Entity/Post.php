@@ -119,11 +119,11 @@ class Post
 
     public function upVote(): void
     {
-        $this->votes++;
+        ++$this->votes;
     }
 
     public function downVote(): void
     {
-        $this->votes--;
+        --$this->votes;
     }
 }

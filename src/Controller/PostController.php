@@ -6,6 +6,7 @@ use App\Entity\Post;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -58,6 +59,22 @@ class PostController extends AbstractController
     {
         return $this->render('post/post.html.twig', [
             'post' => $post,
+        ]);
+    }
+
+    #[Route('/post/{id}/vote', name: 'app_post_vote', methods: ['POST'])]
+    public function vote(Post $post, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $direction = $request->request->get('direction', 'up');
+        if ('up' == $direction) {
+            $post->setVotes($post->getVotes() + 1);
+        } else {
+            $post->setVotes($post->getVotes() - 1);
+        }
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_post', [
+            'id' => $post->getId(),
         ]);
     }
 }

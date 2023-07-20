@@ -52,4 +52,14 @@ class PostController extends AbstractController
             $post->getCreatedAt()->format('d.m.Y H:i:s'),
         ));
     }
+
+    #[Route('/post/{id}')]
+    public function show(int $id, PostRepository $postRepository): Response
+    {
+        $post = $postRepository->find($id);
+
+        return $this->render('post/post.html.twig', [
+            'post' => $post,
+        ]);
+    }
 }

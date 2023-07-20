@@ -73,6 +73,8 @@ class PostController extends AbstractController
         }
         $entityManager->flush();
 
+        $this->addFlash('success', 'Vote counted!');
+
         return $this->redirectToRoute('app_post', [
             'id' => $post->getId(),
         ]);

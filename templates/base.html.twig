@@ -19,6 +19,13 @@
             <i class="fas fa-record-vinyl"></i>
             The Network
         </a>
+        
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+
         {% block body %}{% endblock %}
     </body>
 </html>

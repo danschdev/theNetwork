@@ -41,7 +41,7 @@ class PostController extends AbstractController
     public function new(EntityManagerInterface $entityManager): Response
     {
         $post = new Post();
-        $post->setContent('Welcome to The Network everybody 😎🎉');
+        $post->setContent("Talk to your family? Meet new friends? See what's going on!");
         $post->setVotes(rand(-50, 50));
 
         $entityManager->persist($post);

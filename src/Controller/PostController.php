@@ -53,7 +53,7 @@ class PostController extends AbstractController
         ));
     }
 
-    #[Route('/post/{id}')]
+    #[Route('/post/{id}', name: 'app_post')]
     public function show(int $id, PostRepository $postRepository): Response
     {
         $post = $postRepository->find($id);

@@ -34,3 +34,7 @@ Execute migrations which have not been executed yet:
 
 Query the database:
 > symfony console doctrine:query:sql 'SELECT * FROM post'
+
+Drop the database content and load fixtures into the db:
+> php bin/console doctrine:fixtures:load
+Attention, the database server port must be set in the .env file at DATABASE_URL, according to the port used by the docker container.

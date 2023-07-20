@@ -50,7 +50,7 @@ class PostController extends AbstractController
         return new Response(sprintf(
             'Post %d has been created at %s',
             $post->getId(),
-            $post->getCreatedAt()->format('d.m.Y H:i:s'),
+            $post->getCreatedAt() ? $post->getCreatedAt()->format('d.m.Y H:i:s') : 'ERROR',
         ));
     }
 

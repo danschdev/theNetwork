@@ -66,7 +66,7 @@ final class PostFactory extends ModelFactory
             'content' => self::faker()->paragraph(),
             'createdAt' => self::faker()->dateTimeThisYear(),
             'updatedAt' => self::faker()->dateTimeThisYear(),
-            'votes' => self::faker()->numberBetween(-20,20),
+            'votes' => self::faker()->numberBetween(-20, 20),
         ];
     }
 

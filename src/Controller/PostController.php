@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Pagerfanta\Doctrine\ORM\QueryAdapter;
+use Pagerfanta\Pagerfanta;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,11 +21,16 @@ class PostController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function homepage(PostRepository $postRepository): Response
     {
-        $posts = $postRepository->findBy([], ['createdAt' => 'DESC']);
+        $queryBuilder = $postRepository->createdOrderedByDateQueryBuilder();
+        $adapter = new QueryAdapter($queryBuilder);
+        $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
+            $adapter,
+            1,
+            10
+        );
 
         return $this->render('post/homepage.html.twig', [
-            'date' => new \DateTime(),
-            'posts' => $posts,
+            'pager' => $pagerfanta,
         ]);
     }
 

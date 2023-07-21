@@ -27,16 +27,6 @@ class PostController extends AbstractController
         ]);
     }
 
-    #[Route('/browse/{slug}', name: 'app_browse')]
-    public function browse(string $slug = null): Response
-    {
-        $topic = $slug ? \symfony\component\string\u(str_replace('-', ' ', $slug))->title(true) : null;
-
-        return $this->render('post/post.html.twig', [
-            'text' => 'Talk to your family? Meet new friends? See what\'s going on'.($slug ? ' about '.$topic : '').'!',
-        ]);
-    }
-
     #[Route('/post/new')]
     public function new(EntityManagerInterface $entityManager): Response
     {

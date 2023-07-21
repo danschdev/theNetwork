@@ -65,7 +65,6 @@ final class PostFactory extends ModelFactory
         return [
             'content' => self::faker()->text(),
             'createdAt' => self::faker()->dateTime(),
-            'slug' => self::faker()->text(100),
             'updatedAt' => self::faker()->dateTime(),
             'votes' => self::faker()->randomNumber(),
         ];

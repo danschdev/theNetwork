@@ -19,13 +19,13 @@ class PostController extends AbstractController
     }
 
     #[Route('/', name: 'app_homepage')]
-    public function homepage(PostRepository $postRepository): Response
+    public function homepage(PostRepository $postRepository, Request $request): Response
     {
         $queryBuilder = $postRepository->createdOrderedByDateQueryBuilder();
         $adapter = new QueryAdapter($queryBuilder);
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
-            1,
+            $request->query->get('page', 1),
             10
         );
 

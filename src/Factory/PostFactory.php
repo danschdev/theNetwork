@@ -63,10 +63,10 @@ final class PostFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'content' => self::faker()->text(),
-            'createdAt' => self::faker()->dateTime(),
-            'updatedAt' => self::faker()->dateTime(),
-            'votes' => self::faker()->randomNumber(),
+            'content' => self::faker()->paragraph(),
+            'createdAt' => self::faker()->dateTimeThisYear(),
+            'updatedAt' => self::faker()->dateTimeThisYear(),
+            'votes' => self::faker()->numberBetween(-20,20),
         ];
     }
 

@@ -19,7 +19,7 @@ class PostController extends AbstractController
     #[Route('/', name: 'app_homepage')]
     public function homepage(PostRepository $postRepository): Response
     {
-        $posts = $postRepository->findBy([], ['votes' => 'DESC']);
+        $posts = $postRepository->findBy([], ['createdAt' => 'DESC']);
 
         return $this->render('post/homepage.html.twig', [
             'date' => new \DateTime(),

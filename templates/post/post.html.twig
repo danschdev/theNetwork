@@ -1,6 +1,37 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <div>
-        {{ text }}
+        <div class="post">
+            <div class="post-header">
+                <span class="post-avatar">
+                    <img src="{{ post.imageUrl(50) }}">
+                </span>
+                <span class="post-date">
+                    {{ post.createdAt|date("d.m.Y H:i:s") }}
+                </span>
+            </div>
+            <div class="post-content">
+                {{ post.content }}
+            </div>
+            <div class="post-footer">
+                <span class="post-votes">
+                    {{ post.votesString }} votes
+                </span>
+                <form action="{{ path('app_post_vote', {id: post.id}) }}" method="POST">
+                    <button
+                        type="submit"
+                        class="btn btn-outline-primary"
+                        name="direction"
+                        value="up"
+                    ><span class="fa fa-thumbs-up">+</span></button>
+                    <button
+                        type="submit"
+                        class="btn btn-outline-primary"
+                        name="direction"
+                        value="down"
+                    ><span class="fa fa-thumbs-down">-</span></button>
+                </form>
+            </div>
+        </div>
     </div>
 {% endblock %}

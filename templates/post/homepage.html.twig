@@ -1,5 +1,26 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1 class="post-date">{{ date|date("d.m.Y") }}</h1>
-    {{ text }}
+    {% for post in pager  %}
+        <div class="post">
+            <div class="post-header">
+                <span class="post-avatar">
+                    <img src="{{ post.imageUrl(50) }}">
+                </span>
+                <a href="{{ path('app_post', { 'slug' : post.slug }) }}"
+                    <span class="post-date">
+                        {{ post.createdAt|date("d.m.Y H:i:s") }}
+                    </span>
+                </a>
+            </div>
+            <div class="post-content">
+                {{ post.content }}
+            </div>
+            <div class="post-footer">
+                <span class="post-votes">
+                    {{ post.votesString }}
+                </span>
+            </div>
+        </div>
+    {% endfor %}
+    {{ pagerfanta(pager) }}
 {% endblock %}

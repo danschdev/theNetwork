@@ -25,7 +25,7 @@ class PostController extends AbstractController
         $adapter = new QueryAdapter($queryBuilder);
         $pagerfanta = Pagerfanta::createForCurrentPageWithMaxPerPage(
             $adapter,
-            $request->query->get('page', 1),
+            (int) $request->query->get('page', 1),
             10
         );
 
